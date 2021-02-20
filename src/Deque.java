@@ -67,7 +67,9 @@ public class Deque<Item> implements Iterable<Item> {
         DoubleNode newNode = new DoubleNode();
         newNode.content = item;
 
-        if (this.size() == 0) {
+        if (item == null) {
+            throw new NullPointerException();
+        } else if (isEmpty()) {
             start = newNode;
             end = newNode;
         } else {
@@ -88,7 +90,9 @@ public class Deque<Item> implements Iterable<Item> {
         DoubleNode newNode = new DoubleNode();
         newNode.content = item;
 
-        if (this.size() == 0) {
+        if (item == null) {
+            throw new NullPointerException();
+        } else if (isEmpty()) {
             end = newNode;
             start = newNode;
 
@@ -109,7 +113,7 @@ public class Deque<Item> implements Iterable<Item> {
      */
     public Item removeFirst() {
 
-        if (this.size() == 0) {
+        if (isEmpty()) {
             throw new NoSuchElementException();
         } else {
 
@@ -129,7 +133,7 @@ public class Deque<Item> implements Iterable<Item> {
      */
     public Item removeLast() {
 
-        if (this.size() == 0) {
+        if (isEmpty()) {
             throw new NoSuchElementException();
         } else {
 
