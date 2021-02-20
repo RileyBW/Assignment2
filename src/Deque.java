@@ -15,8 +15,8 @@ public class Deque<Item> implements Iterable<Item> {
      * 
      */
     public Deque() {
-        this.start = new DoubleNode();
-        this.end = new DoubleNode();
+        this.start = null;
+        this.end = null;
         this.size = 0;
 
     }
@@ -43,7 +43,7 @@ public class Deque<Item> implements Iterable<Item> {
      */
     public boolean isEmpty() {
 
-        return this.size == 0;
+        return this.size() == 0;
     }
 
     /**
@@ -75,7 +75,7 @@ public class Deque<Item> implements Iterable<Item> {
             start = newNode;
 
         }
-        this.size++;
+        size++;
     }
 
     /**
@@ -97,7 +97,7 @@ public class Deque<Item> implements Iterable<Item> {
             end = newNode;
 
         }
-        this.size++;
+        size++;
     }
 
     /**
@@ -114,8 +114,8 @@ public class Deque<Item> implements Iterable<Item> {
         } else {
 
             Item firstItem = start.content;
-            start.next = start;
-            this.size--;
+            start = start.next;
+            size--;
             return firstItem;
         }
     }
@@ -134,8 +134,8 @@ public class Deque<Item> implements Iterable<Item> {
         } else {
 
             Item lastItem = end.content;
-            end.last = end;
-            this.size--;
+            end = end.last;
+            size--;
             return lastItem;
         }
     }
